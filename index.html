@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="index.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="calculator">
+            <input class="display-numbers" type="text" value="0" readonly></input>
+            <div class="calc-buttons">
+                <button id="C" class="btn all-clear blue" onclick="getId(this.id)">AC</button>
+                <button id="+" id="+/-" class="btn plus-minus blue" onclick="getId(this.id)">+/-</button>
+                <button id="%" class="btn percentage blue" onclick="getId(this.id)">%</button>
+                <button id="/" class="btn divide orange" onclick="getId(this.id)">/</button>
+                <button id="7" class="btn green" onclick="getId(this.id)">7</button>
+                <button id="8" class="btn green" onclick="getId(this.id)">8</button>
+                <button id="9" class="btn green" onclick="getId(this.id)">9</button>
+                <button id="*" class="btn multiplication orange" onclick="getId(this.id)">*</button>
+                <button id="4" class="btn green" onclick="getId(this.id)">4</button>
+                <button id="5" class="btn green" onclick="getId(this.id)">5</button>
+                <button id="6" class="btn green" onclick="getId(this.id)">6</button>
+                <button id="-" class="btn subtract orange" onclick="getId(this.id)">-</button>
+                <button id="1" class="btn green" onclick="getId(this.id)">1</button>
+                <button id="2" class="btn green" onclick="getId(this.id)">2</button>
+                <button id="3" class="btn green" onclick="getId(this.id)">3</button>
+                <button id="+" class="btn addition orange" onclick="getId(this.id)">+</button>
+                <button id="0" class="btn zero-btn green" onclick="getId(this.id)">0</button>
+                <button id="." class="btn dot green" onclick="getId(this.id)">.</button>
+                <button id="=" class="btn equal orange" onclick="getId(this.id)">=</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
