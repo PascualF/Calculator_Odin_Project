@@ -5,14 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
-    <script src="index.js"></script>
 </head>
 <body>
     <div class="container">
         <div class="calculator">
             <input class="display-numbers" type="text" value="0" readonly></input>
             <div class="calc-buttons">
-                <button id="C" class="btn all-clear blue" onclick="getId(this.id)">AC</button>
+                <button id="C" class="btn all-clear blue" onclick="clearDisplay(this.id)">AC</button>
                 <button id="+" id="+/-" class="btn plus-minus blue" onclick="getId(this.id)">+/-</button>
                 <button id="%" class="btn percentage blue" onclick="getId(this.id)">%</button>
                 <button id="/" class="btn divide orange" onclick="getId(this.id)">/</button>
@@ -35,5 +34,6 @@
         </div>
     </div>
 
+    <script src="index.js"></script>
 </body>
 </html>
