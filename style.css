@@ -31,7 +31,7 @@ body{
     border: 0;
 }
 
-.zero-btn{
+.span2{
     grid-column: span 2;
 }
 

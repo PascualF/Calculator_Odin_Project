@@ -1,9 +1,8 @@
 let displayNumbers = document.querySelector(".display-numbers");
-const buttons = document.querySelector(".btn");
-const numbers = ['0', '1', '2', '3', '4', '5' ,'6', '7', '8', '9'];
+const buttons = document.querySelectorAll(".btn");
 let currentOperand = '';
 let previousOperand = '';
-let operator = null;
+let operator = '';
 
 const clearDisplay = () => {
     currentOperand = '';
@@ -11,56 +10,111 @@ const clearDisplay = () => {
     return displayNumbers.value = '0';
 };
 
-const singleOperator = (number, operator) => {
-    number = Number(number);
-    if (operator === '+/-'){
-        if(number < 0){
-            return number *= -1;
-        } else if(number > 0){
-            return number *= -1;
-        } else {
-            return number
-        }
-    } else if (operator === '%'){
-        return number / 100;
-    }
-};
-
-const operate = () => {
-
+const add = (a, b) => {
+    return a + b;
 }
 
-const getId = (btn_id) => {
-    if(btn_id === 'C'){
-        clearDisplay();
-    }
-    if(displayNumbers.value === '0'){
-        displayNumbers.value = btn_id;
-        currentOperand = btn_id;
-    } else if (btn_id in numbers){
-        displayNumbers.value += btn_id;
-        currentOperand += btn_id;
+const subtract = (a, b) => {
+    return a - b;
+}
+
+const multiply = (a, b) => {
+    return a * b;
+}
+
+const divide = (a, b) => {
+    if (b == 0){
+        return 'Err0r'
     } else {
-        if(btn_id === '+/-' || btn_id === '%'){
-            displayNumbers.value = singleOperator(currentOperand, btn_id);
-        } else if (btn_id === '/'){
-            previousOperand = currentOperand;
-            operator = '/';
-        }else if (btn_id === '*'){
-            previousOperand = currentOperand;
-            operator = '*';
-        }else if (btn_id === '-'){
-            previousOperand = currentOperand;
-            operator = '-';
-        }else if (btn_id === '+'){
-            previousOperand = currentOperand;
-            operator = '+';
-        }
-    }
-    if (btn_id === '='){
-        if (previousOperand !== '' || currentOperand !== ''){
-            displayNumbers.value = previousOperand + currentOperand;
-        }
-    }
-    console.log(currentOperand)
+    return a / b;
+    }; 
 };
+
+const operate = (a, operator, b) => {
+    if (operator === '+'){
+        return add(a, b);
+    } else if (operator === '-'){
+        return subtract(a, b);
+    } else if (operator === '*'){
+        return multiply(a, b);
+    } else if (operator === '/'){
+        return  divide(a, b);
+    } 
+}
+
+buttons.forEach(button  => {
+    button.addEventListener('click', () => {
+
+        if(!previousOperand && !operator && !currentOperand){
+            if(button.classList.contains('num')){
+                previousOperand += button.textContent;
+                displayNumbers.value = previousOperand;
+                console.log(previousOperand)
+            }
+        } else if (previousOperand && !operator && !currentOperand) {
+            if (button.textContent === '+/-'){
+                if (previousOperand[0] === '-'){
+                    previousOperand *= -1;
+                    displayNumbers.value = previousOperand;
+                } else{
+                    previousOperand *= -1;
+                    displayNumbers.value = previousOperand;
+                }
+            } 
+            if (button.classList.contains('operate')){
+                operator = button.textContent;
+                console.log(operator)  
+            } else if (button.classList.contains('num')){
+                previousOperand += button.textContent;
+                displayNumbers.value = previousOperand;
+                console.log(previousOperand);
+            }
+        } else if(previousOperand && operator && !currentOperand){
+            if (button.textContent === '+/-'){
+                if (previousOperand[0] === '-'){
+                    previousOperand *= -1;
+                    displayNumbers.value = previousOperand;
+                } else{
+                    previousOperand *= -1;
+                    displayNumbers.value = previousOperand;
+                }
+            } else if(button.classList.contains('operate')){
+                operator = button.textContent;
+                console.log(operator)
+            } else if(button.classList.contains('num')){
+                currentOperand += button.textContent;
+                displayNumbers.value = currentOperand;
+                console.log(currentOperand)
+            }
+        }else {
+            if(button.classList.contains('operate')){
+                result = operate(previousOperand, operator, currentOperand);
+                previousOperand = result;
+                console.log(previousOperand)
+                result = '';
+                operator = button.textContent;
+                currentOperand = '';
+                displayNumbers.value = previousOperand;
+                console.log(result);
+            } else if (button.textContent === '+/-'){
+                if (previousOperand[0] === '-'){
+                    previousOperand *= -1;
+                    displayNumbers.value = previousOperand;
+                } else {
+                    previousOperand *= -1;
+                    displayNumbers.value = previousOperand;
+                }
+            } else if(button.classList.contains('num')){
+                currentOperand += button.textContent;
+                displayNumbers.value = currentOperand;
+            }
+        }
+
+        if (button.textContent === '%'){
+            if(displayNumbers.value){
+                displayNumbers.value /= 100;
+            }
+        }
+
+    })
+})
