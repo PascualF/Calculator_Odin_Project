@@ -7,11 +7,17 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <h1>Calculate your way</h1>
+    <label class="switch-dark-mode">
+        <input type="checkbox">
+        <span class="slider"></span>
+    </label>
     <div class="container">
         <div class="calculator">
-            <input class="display-numbers" type="text" value="0" readonly></input>
+            <input class="display-numbers" type="text" value="0" readonly aria-label="Calculator display">
             <div class="calc-buttons">
-                <button id="C" class="btn span2 all-clear blue" onclick="clearDisplay(this.id)">AC</button>
+                <button id="AC" class="btn all-clear blue" onclick="clearDisplay(this.id)">AC</button>
+                <button id="C" class="btn clear blue">C</button>
                 <button id="%" class="btn operate percentage blue">%</button>
                 <button id="/" class="btn operate divide orange">/</button>
                 <button id="7" class="btn num green">7</button>
@@ -28,7 +34,7 @@
                 <button id="+" class="btn operate addition orange">+</button>
                 <button id="0" class="btn num zero-btn green">0</button>
                 <button id="." class="btn dot green">.</button>
-                <button id="+/-" class="btn +/- orange" >+/-</button>
+                <button id="+/-" class="btn orange" >+/-</button>
                 <button id="=" class="btn operate equal orange">=</button>
             </div>
         </div>
